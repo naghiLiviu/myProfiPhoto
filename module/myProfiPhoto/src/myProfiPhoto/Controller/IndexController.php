@@ -9,4 +9,10 @@
 class IndexController
 {
 // some funtions to be addded
+    public function indexAction()
+    {
+        $viewModel = new \Zend\View\Model\ViewModel();
+        $viewModel->setTemplate('myprofiphoto/myprofiphoto/index.phtml');
+        return $viewModel;
+    }
 }

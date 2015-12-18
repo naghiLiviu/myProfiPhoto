@@ -1,2 +1,13 @@
 <?php
 //index view
+
+$title = 'My Professional Photos';
+$this->headTitle($title);
+?>
+
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<div class="btn-group">
+    <a href="<?php echo $this->url('myProfiPhoto', array('action'=>'register'));?>"  class="btn-link">Register</a>
+    <br>
+</div>
