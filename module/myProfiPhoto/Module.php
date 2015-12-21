@@ -6,7 +6,7 @@
  * Time: 10:49 AM
  */
 
-namespace Album;
+namespace myProfiPhoto;
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
