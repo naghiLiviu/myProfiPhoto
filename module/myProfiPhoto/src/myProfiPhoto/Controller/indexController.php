@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: my1-asus
@@ -7,11 +6,11 @@
  * Time: 3:15 PM
  */
 namespace myProfiPhoto\Controller;
-
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class myProfiPhotoController extends AbstractActionController
+
+class indexController extends AbstractActionController
 {
 // some funtions to be addded
     public function indexAction()
