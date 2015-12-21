@@ -6,13 +6,28 @@
  * Date: 12/18/15
  * Time: 3:15 PM
  */
-class IndexController
+namespace myProfiPhoto\Controller;
+
+use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\ViewModel;
+
+class IndexController extends AbstractActionController
 {
 // some funtions to be addded
     public function indexAction()
     {
-        $viewModel = new \Zend\View\Model\ViewModel();
+        $viewModel = new ViewModel();
         $viewModel->setTemplate('myprofiphoto/myprofiphoto/index.phtml');
         return $viewModel;
+    }
+
+    public function loginAction()
+    {
+
+    }
+
+    public function registerAction()
+    {
+
     }
 }

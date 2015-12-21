@@ -10,10 +10,10 @@ return array(
             'album' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/album[/:action][/:id]',
+                    'route' => '/myprofiphoto[/:action][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id' => '[0-9]',
+                        'id' => '[0-9]*',
                     ),
                     'defaults' => array(
                         'controller' => 'myProfiPhoto\Controller\Index',
@@ -33,7 +33,7 @@ return array(
         'options' => array(
             'route'    => '/',
             'defaults' => array(
-                'controller' => 'Application\Controller\Index',
+                'controller' => 'Application\Controller\myProfiPhoto',
                 'action'     => 'index',
             ),
         ),
