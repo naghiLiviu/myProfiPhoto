@@ -1,4 +1,5 @@
 <?php
+
 return array(
     'controllers' => array(
         'invokables' => array(
@@ -7,10 +8,9 @@ return array(
     ),
     'router' => array(
         'routes' => array(
-            'album' => array(
+            'myprofiphoto' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/myprofiphoto[/:action][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]*',
@@ -25,7 +25,7 @@ return array(
     ),
     'view_manager' => array(
         'template_path_stack' => array(
-            'album' => __DIR__ . '/../view',
+            'myprofiphoto' => __DIR__ . '/../view',
         ),
     ),
     'home' => array(
@@ -33,7 +33,7 @@ return array(
         'options' => array(
             'route'    => '/',
             'defaults' => array(
-                'controller' => 'Application\Controller\myProfiPhoto',
+                'controller' => 'Application\Controller\Index',
                 'action'     => 'index',
             ),
         ),
