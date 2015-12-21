@@ -8,7 +8,7 @@ return array(
     ),
     'router' => array(
         'routes' => array(
-            'myprofiphoto' => array(
+            'myProfiPhoto' => array(
                 'type' => 'segment',
                 'options' => array(
                     'route' => '/:action[/:id]',

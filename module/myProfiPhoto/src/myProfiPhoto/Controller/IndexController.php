@@ -11,7 +11,7 @@ namespace myProfiPhoto\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class myProfiPhotoController extends AbstractActionController
+class IndexController extends AbstractActionController
 {
 // some funtions to be addded
     public function indexAction()
