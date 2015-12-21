@@ -42,8 +42,10 @@ class RegisterForm extends Form
             'name' => 'age',
             'type' => 'Zend\Form\Element\Select',
             'options' => array(
-                'min' => '14',
-                'max' => '100',
+                'values' => array(
+                    'min' => '14',
+                    'max' => '100',
+                ),
                 'label' => 'Age',
                 'allow_empty' => false,
             ),
