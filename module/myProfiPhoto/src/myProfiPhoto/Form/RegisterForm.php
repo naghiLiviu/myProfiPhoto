@@ -45,6 +45,7 @@ class RegisterForm extends Form
                 'min' => '14',
                 'max' => '100',
                 'label' => 'Age',
+                'allow_empty' => false,
             ),
             'attributes' => array(
                 'placeholder' => 'insert age',
