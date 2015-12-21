@@ -40,8 +40,10 @@ class RegisterForm extends Form
 
         $this->add(array(
             'name' => 'age',
-            'type' => 'Zend\Form\Element\Number',
+            'type' => 'Zend\Form\Element\Select',
             'options' => array(
+                'min' => '14',
+                'max' => '100',
                 'label' => 'Age',
             ),
             'attributes' => array(
@@ -102,6 +104,17 @@ class RegisterForm extends Form
             'attributes' => array(
                 '1' => 'Male',
                 '2' => 'Female,'
+            ),
+        ));
+
+        $this->add(array(
+            'name' => 'captcha',
+            'type' => 'Zend\Form\Element\Captcha',
+            'options' => array(
+                'label' => 'Please verify you are a human',
+                'captcha' => array(
+                    'class' => 'Dumb',
+                ),
             ),
         ));
     }
