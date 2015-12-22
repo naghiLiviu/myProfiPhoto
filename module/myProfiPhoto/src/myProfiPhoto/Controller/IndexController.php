@@ -11,6 +11,7 @@ namespace myProfiPhoto\Controller;
 use myProfiPhoto\Form\RegisterForm;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use myProfiPhoto\Form\LoginForm;
 
 class IndexController extends AbstractActionController
 {
@@ -24,7 +25,12 @@ class IndexController extends AbstractActionController
 
     public function loginAction()
     {
-        $viewModel = new ViewModel();
+
+        $form = new LoginForm();
+
+        $viewModel = new ViewModel(
+            array('form' => $form,)
+        );
         $viewModel->setTemplate('myprofiphoto/myprofiphoto/login.phtml');
         return $viewModel;
     }

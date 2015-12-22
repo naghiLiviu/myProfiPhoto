@@ -5,9 +5,30 @@
  * Date: 12/22/15
  * Time: 9:05 AM
  */
+$form = $this->form;
 $title = 'Log in';
 $this->headTitle($title);
 ?>
 
 <h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+$form->prepare();
+echo $this->form()->openTag($form);
+?>
 
+<div class="form_element">
+    <div class="control-group">
+        <?php echo $this->formLabel($form->get('username')->setLabelAttributes(array('class'=>'control-label'))); ?>
+        <div class="controls"><?php echo $this->formInput($form->get('username')); ?></div>
+    </div>
+    <div class="control-group">
+        <?php echo $this->formLabel($form->get('password')->setLabelAttributes(array('class'=>'control-label'))); ?>
+        <div class="controls"><?php echo $this->formInput($form->get('password')); ?></div>
+    </div>
+    <div class="control-group">
+        <br>
+        <div class="controls"><?php echo $this->formInput($form->get('submit')); ?></div>
+    </div>
+
+    <?php echo $this->form()->closeTag($form); ?>
+</div>
