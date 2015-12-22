@@ -8,8 +8,8 @@
 
 namespace myProfiPhoto;
 
-use myProfiPhoto\Model\myProfiPhoto;
-use myProfiPhoto\Model\myProfiPhotoTable;
+use myProfiPhoto\Model\User;
+use myProfiPhoto\Model\UserTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
@@ -41,16 +41,16 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
     {
         return array(
             'factories' => array(
-                'myProfiPhoto\Model\myProfiPhotoTable' =>  function($sm) {
-                    $tableGateway = $sm->get('myProfiPhotoTableGateway');
-                    $table = new myProfiPhotoTable($tableGateway);
+                'myProfiPhoto\Model\UserTable' =>  function($sm) {
+                    $tableGateway = $sm->get('UserTableGateway');
+                    $table = new UserTable($tableGateway);
                     return $table;
                 },
-                'myProfiPhotoTableGateway' => function ($sm) {
+                'UserTableGateway' => function ($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $resultSetPrototype = new ResultSet();
-                    $resultSetPrototype->setArrayObjectPrototype(new myProfiPhoto());
-                    return new TableGateway('myProfiPhoto', $dbAdapter, null, $resultSetPrototype);
+                    $resultSetPrototype->setArrayObjectPrototype(new User());
+                    return new TableGateway('User', $dbAdapter, null, $resultSetPrototype);
                 },
             ),
         );
