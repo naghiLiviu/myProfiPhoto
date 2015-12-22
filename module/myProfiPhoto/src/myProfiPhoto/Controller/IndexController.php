@@ -21,13 +21,24 @@ class IndexController extends AbstractActionController
         return $viewModel;
     }
 
-//    public function loginAction()
-//    {
-//
-//    }
-//
-//    public function registerAction()
-//    {
-//
-//    }
+    public function loginAction()
+    {
+        $viewModel = new ViewModel();
+        $viewModel->setTemplate('myprofiphoto/myprofiphoto/login.phtml');
+        return $viewModel;
+    }
+
+    public function registerAction()
+    {
+        $viewModel = new ViewModel();
+        $viewModel->setTemplate('myprofiphoto/myprofiphoto/register.phtml');
+        return $viewModel;
+    }
+
+    public function logoutAction()
+    {
+        $viewModel = new ViewModel();
+        $viewModel->setTemplate('myprofiphoto/myprofiphoto/logout.phtml');
+        return $viewModel;
+    }
 }

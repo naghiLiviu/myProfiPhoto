@@ -8,10 +8,21 @@ $this->headTitle($title);
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 
 <div class="btn-group">
-    <a href="<?php echo $this->url('myProfiPhoto', array('action'=>'register'));?>"  class="btn-link">Register</a>
-    <br>
-    <a href="<?php echo $this->url('myProfiPhoto', array('action'=>'login')); ?>">Log in</a>
-    <br>
+    <span class="glyphicon-star">
+        <a href="<?php echo $this->url('myProfiPhoto', array('action'=>'register'));?>"  class="btn-link">Register</a>
+        <br>
+    </span>
+    <span class="glyphicon-star">
+        <a href="<?php echo $this->url('myProfiPhoto', array('action'=>'login')); ?>" class="btn-link">Log in</a>
+        <br>
+    </span>
+    <span class="glyphicon-star">
+        <a href="<?php echo $this->url('myProfiPhoto', array('action'=>'logout')); ?>" class="btn-link">Log out</a>
+        <br>
+    </span>
+    <span class="glyphicon-star">
+         <a href="<?php echo $this->url('myProfiPhoto', array('action'=>'index')); ?>" class="btn-link">Home</a>
+    </span>
 </div>
 
 
