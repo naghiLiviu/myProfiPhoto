@@ -8,6 +8,7 @@
  */
 namespace myProfiPhoto\Controller;
 
+use myProfiPhoto\Form\RegisterForm;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
@@ -30,6 +31,8 @@ class IndexController extends AbstractActionController
 
     public function registerAction()
     {
+        $form = new RegisterForm();
+
         $viewModel = new ViewModel();
         $viewModel->setTemplate('myprofiphoto/myprofiphoto/register.phtml');
         return $viewModel;
