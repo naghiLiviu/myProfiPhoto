@@ -9,19 +9,19 @@ $this->headTitle($title);
 
 <div class="btn-group">
     <span class="glyphicon-star">
-        <a href="<?php echo $this->url('myProfiPhoto', array('action'=>'register'));?>"  class="btn-link">Register</a>
-        <br>
+         <a href="<?php echo $this->url('myProfiPhoto', array('action'=>'index')); ?>" class="btn-link">Home</a>
     </span>
     <span class="glyphicon-star">
         <a href="<?php echo $this->url('myProfiPhoto', array('action'=>'login')); ?>" class="btn-link">Log in</a>
         <br>
     </span>
     <span class="glyphicon-star">
-        <a href="<?php echo $this->url('myProfiPhoto', array('action'=>'logout')); ?>" class="btn-link">Log out</a>
+        <a href="<?php echo $this->url('myProfiPhoto', array('action'=>'register'));?>"  class="btn-link">Register</a>
         <br>
     </span>
     <span class="glyphicon-star">
-         <a href="<?php echo $this->url('myProfiPhoto', array('action'=>'index')); ?>" class="btn-link">Home</a>
+        <a href="<?php echo $this->url('myProfiPhoto', array('action'=>'logout')); ?>" class="btn-link">Log out</a>
+        <br>
     </span>
 </div>
 
