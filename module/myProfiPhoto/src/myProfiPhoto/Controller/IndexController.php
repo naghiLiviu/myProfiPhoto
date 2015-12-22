@@ -40,9 +40,7 @@ class IndexController extends AbstractActionController
         $form = new RegisterForm();
 
         $viewModel = new ViewModel(
-            array(
-              'form' => $form,
-            )
+            array('form' => $form,)
         );
         $viewModel->setTemplate('myprofiphoto/myprofiphoto/register.phtml');
         return $viewModel;
