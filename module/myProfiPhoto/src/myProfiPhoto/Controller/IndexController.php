@@ -29,11 +29,21 @@ class IndexController extends AbstractActionController
         return $viewModel;
     }
 
+    /**
+     * adding form
+     * sending them to mock
+     *
+     * @return ViewModel
+     */
     public function registerAction()
     {
         $form = new RegisterForm();
 
-        $viewModel = new ViewModel();
+        $viewModel = new ViewModel(
+            array(
+              'form' => $form,
+            )
+        );
         $viewModel->setTemplate('myprofiphoto/myprofiphoto/register.phtml');
         return $viewModel;
     }
