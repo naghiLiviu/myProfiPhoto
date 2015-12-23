@@ -59,10 +59,13 @@ class UserTable
     {
         $rowset = $this->tableGateway->select(array('UserName' => $username, 'Password' => $password));
         $row = $rowset->current();
+        $message = '';
         if (!$row) {
-            throw new \Exception("Could not find $username in the database!");
+            $message = 'Cannot find the username in the database';
+        } else {
+            $message = 'You logged in sucsessful';
         }
-        return $row;
+        return $message;
     }
 
 }
