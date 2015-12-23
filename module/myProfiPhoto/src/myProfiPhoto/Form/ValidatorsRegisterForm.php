@@ -8,146 +8,171 @@
 
 namespace myProfiPhoto\Form;
 
+use Zend\InputFilter\Factory as InputFactory;
+use Zend\Filter\FilterInterface;
 use Zend\InputFilter\InputFilter;
+use Zend\InputFilter\InputFilterAwareInterface;
+use Zend\Validator\ValidatorInterface;
+use Zend\InputFilter\InputFilterInterface;
 
-
-class ValidatorsRegisterForm
+class ValidatorsRegisterForm implements InputFilterAwareInterface
 {
-    public function registerFormInputFilter()
+    protected $inputFilter;
+
+
+    public function setInputFilter(InputFilterInterface $inputFilter)
     {
-        $inputFilter = new InputFilter();
+        throw new \Exception("Not used");
+    }
 
-        $inputFilter->add(array(
-            'name'     => 'firstName',
-            'required' => true,
-            'filters'  => array(
-                array('name' => 'Zend\Filter\StripTags'),
-                array('name' => 'Zend\Filter\StringTrim'),
-            ),
-            'validators' => array(
-                array(
-                    'name'    => 'StringLength',
-                    'options' => array(
-                        'encoding' => 'UTF-8',
-                        'min'      => 1,
-                        'max'      => 30,
-                    ),
-                ),
-                array(
-                    'name' => 'Zend\I18n\Validator\Alpha',
-                    'options' => array(
-                        'allowWhiteSpace' => true,
-                    ),
-                ),
-            ),
-        ));
+    public function getInputFilter()
+    {
 
-        $inputFilter->add(array(
-            'name'     => 'larstName',
-            'required' => true,
-            'filters'  => array(
-                array('name' => 'Zend\Filter\StripTags'),
-                array('name' => 'Zend\Filter\StringTrim'),
-            ),
-            'validators' => array(
-                array(
-                    'name'    => 'StringLength',
-                    'options' => array(
-                        'encoding' => 'UTF-8',
-                        'min'      => 1,
-                        'max'      => 20,
-                    ),
-                ),
-                array(
-                    'name' => 'Zend\I18n\Validator\Alpha',
-                    'options' => array(
-                        'allowWhiteSpace' => true,
-                    ),
-                ),
-            ),
-        ));
 
-        $inputFilter->add(array(
-            'name'     => 'username',
-            'required' => true,
-            'filters'  => array(
-                array('name' => 'Zend\Filter\StripTags'),
-                array('name' => 'Zend\Filter\StringTrim'),
-            ),
-            'validators' => array(
-                array(
-                    'name'    => 'StringLength',
-                    'options' => array(
-                        'encoding' => 'UTF-8',
-                        'min'      => 1,
-                        'max'      => 20,
+        if (!$this->inputFilter) {
+            $inputFilter = new InputFilter();
+            $factory = new InputFactory();
+
+
+            $inputFilter->add($factory->createInput(array(
+                'name' => 'firstName',
+                'required' => true,
+                'filters' => array(
+                    array('name' => 'Zend\Filter\StripTags'),
+                    array('name' => 'Zend\Filter\StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name' => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min' => 1,
+                            'max' => 30,
+                        ),
+                    ),
+                    array(
+                        'name' => 'Zend\I18n\Validator\Alpha',
+                        'options' => array(
+                            'allowWhiteSpace' => true,
+                        ),
                     ),
                 ),
-            ),
-        ));
+            )));
 
-        $inputFilter->add(array(
-            'name'     => 'email',
-            'required' => true,
-            'filters'  => array(
-                array('name' => 'Zend\Filter\StripTags'),
-                array('name' => 'Zend\Filter\StringTrim'),
-            ),
-            'validators' => array(
-                array(
-                    'name'    => 'Zend\Validator\EmailAddress',
+
+            $inputFilter->add($factory->createInput(array(
+                'name' => 'lastName',
+                'required' => true,
+                'filters' => array(
+                    array('name' => 'Zend\Filter\StripTags'),
+                    array('name' => 'Zend\Filter\StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name' => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min' => 1,
+                            'max' => 20,
+                        ),
+                    ),
+                    array(
+                        'name' => 'Zend\I18n\Validator\Alpha',
+                        'options' => array(
+                            'allowWhiteSpace' => true,
+                        ),
                     ),
                 ),
-        ));
-
-        $inputFilter->add(array(
-            'name'     => 'password',
-            'required' => true,
-            'filters'  => array(
-                array('name' => 'Zend\Filter\StripTags'),
-                array('name' => 'Zend\Filter\StringTrim'),
-            ),
-            'validators' => array(
-                array(
-                    'name'    => 'StringLength',
-                    'options' => array(
-                        'encoding' => 'UTF-8',
-                        'min'      => 8,
+            )));
+            $inputFilter->add($factory->createInput(array(
+                'name' => 'username',
+                'required' => true,
+                'filters' => array(
+                    array('name' => 'Zend\Filter\StripTags'),
+                    array('name' => 'Zend\Filter\StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name' => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min' => 8,
+                            'max' => 20,
+                        ),
                     ),
                 ),
-            ),
-        ));
+            )));
 
-        $inputFilter->add(array(
-            'name'     => 'confirmPassword',
-            'required' => true,
-            'filters'  => array(
-                array('name' => 'Zend\Filter\StripTags'),
-                array('name' => 'Zend\Filter\StringTrim'),
-            ),
-            'validators' => array(
-                array(
-                    'name'    => 'StringLength',
-                    'options' => array(
-                        'encoding' => 'UTF-8',
-                        'min'      => 8,
+            $inputFilter->add($factory->createInput(array(
+                'name' => 'email',
+                'required' => true,
+                'filters' => array(
+                    array('name' => 'Zend\Filter\StripTags'),
+                    array('name' => 'Zend\Filter\StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name' => 'Zend\Validator\EmailAddress',
                     ),
                 ),
-                array(
-                    'name' => 'Zend\Validator\Identical',
-                    'options' => array(
-                        'token' => 'password'
+            )));
+
+            $inputFilter->add($factory->createInput(array(
+                'name' => 'password',
+                'required' => true,
+                'filters' => array(
+                    array('name' => 'Zend\Filter\StripTags'),
+                    array('name' => 'Zend\Filter\StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name' => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min' => 8,
+                        ),
                     ),
                 ),
-            ),
-        ));
+            )));
 
-        $inputFilter->add(array(
-            'name'     => 'gender',
-            'required' => true,
-        ));
+            $inputFilter->add($factory->createInput(array(
+                'name' => 'confirmPassword',
+                'required' => true,
+                'filters' => array(
+                    array('name' => 'Zend\Filter\StripTags'),
+                    array('name' => 'Zend\Filter\StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name' => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min' => 8,
+                        ),
+                    ),
+                    array(
+                        'name' => 'Zend\Validator\Identical',
+                        'options' => array(
+                            'token' => 'password'
+                        ),
+                    ),
+                ),
+            )));
 
-        return $inputFilter;
+            $inputFilter->add($factory->createInput(array(
+                'name' => 'g-recaptcha-response',
+                'require' => 'true',
+            )));
+
+            $inputFilter->add($factory->createInput(array(
+                'name' => 'gender',
+                'required' => true,
+            )));
+            $this->inputFilter = $inputFilter;
+
+
+        }
+        return $this->$inputFilter;
 
     }
 }

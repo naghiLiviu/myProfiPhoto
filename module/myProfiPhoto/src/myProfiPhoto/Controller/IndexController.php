@@ -9,6 +9,7 @@
 namespace myProfiPhoto\Controller;
 
 use myProfiPhoto\Form\RegisterForm;
+use myProfiPhoto\Form\ValidatorsRegisterForm;
 use myProfiPhoto\Model\UserTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
@@ -59,6 +60,27 @@ class IndexController extends AbstractActionController
     {
         $form = new RegisterForm();
 
+
+        $request = $this->getRequest();
+
+        if ($request->isPost()) {
+            $data = $request->getPost();
+//            \Zend\Debug\Debug::dump($data);
+            $validator = new ValidatorsRegisterForm();
+            $form->setInputFilter($validator->getInputFilter());
+
+            $form->setData($data);
+            $valid = $form->isValid();
+            if($valid) {
+                \Zend\Debug\Debug::dump($form->getData());
+            }
+
+        }
+//        if($request->isPost()) {
+//            $data=$this->getRequest()->getPost();
+//            $form->setData($data);
+//            $form->setInputFilter($registerValidator->registerFormInputFilter());
+//        }
         $viewModel = new ViewModel(
             array('form' => $form,)
         );

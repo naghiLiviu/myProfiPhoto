@@ -9,6 +9,7 @@
 namespace myProfiPhoto\Form;
 
 use Zend\Form\Form;
+use Zend\InputFilter\Input;
 
 class RegisterForm extends Form
 {
@@ -16,6 +17,14 @@ class RegisterForm extends Form
     public function __construct($name = null)
     {
         parent::__construct('myprofiphoto');
+
+        $this->setAttribute('method', 'POST');
+
+        $this->add(array(
+            'name' => 'id',
+            'type' => 'hidden'
+        ));
+
         $this->add(array(
             'name' => 'firstName',
             'type' => 'Zend\Form\Element\Text',
@@ -23,7 +32,7 @@ class RegisterForm extends Form
                 'label' => 'First Name',
             ),
             'attributes' => array(
-                'placeholder' => 'insert your first name',
+                'placeholder' => 'type your first name',
             ),
         ));
 
@@ -34,25 +43,21 @@ class RegisterForm extends Form
                 'label' => 'Last Name',
             ),
             'attributes' => array(
-                'placeholder' => 'insert your last name',
+                'placeholder' => 'type your last name',
             ),
         ));
 
         $this->add(array(
-            'name' => 'age',
-            'type' => 'Zend\Form\Element\Select',
+            'name' => 'birthDate',
+            'type' => 'Zend\Form\Element\Text',
             'options' => array(
-                'values' => array(
-                    'min' => '14',
-                    'max' => '100',
-                ),
-                'label' => 'Age',
-                'allow_empty' => false,
+                'label' => 'Insert birth day',
             ),
             'attributes' => array(
-                'placeholder' => 'insert age',
+                'placeholder' => '__/__/____'
             ),
         ));
+
 
         $this->add(array(
             'name' => 'username',
@@ -93,32 +98,43 @@ class RegisterForm extends Form
             'options' => array(
                 'label' => 'Re-type Password'
             ),
-            'attribute' => array(
+            'attributes' => array(
                 'placeholder' => 'retype your password'
             ),
         ));
 
         $this->add(array(
-            'name' => 'gender',
             'type' => 'Zend\Form\Element\Radio',
+            'name' => 'gender',
             'options' => array(
-                'label' => 'Gender',
+                'label' => 'Select Gender',
+
             ),
             'attributes' => array(
-                '1' => 'Male',
-                '2' => 'Female,'
+                'options' => array(
+                    'Male' => 'Male',
+                    'Female' => 'Female',
+                ),
             ),
         ));
 
         $this->add(array(
-            'name' => 'captcha',
-            'type' => 'Zend\Form\Element\Captcha',
-            'options' => array(
-                'label' => 'Please verify you are a human',
-                'captcha' => array(
-                    'class' => 'Dumb',
-                ),
+            'name' => 'g-recaptcha-response',
+            'type' => 'Zend\Form\Element\Text',
+        ));
+
+        $this->add(array(
+            'name' => 'submit',
+            'type' => 'Submit',
+            'attributes' => array(
+                'value' => 'Register',
+                'id' => 'submitbutton',
+                'class' => 'btn-link'
             ),
         ));
     }
 }
+
+
+
+
