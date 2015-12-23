@@ -170,9 +170,7 @@ class ValidatorsRegisterForm implements InputFilterAwareInterface
             )));
             $this->inputFilter = $inputFilter;
 
-
         }
-        return $this->$inputFilter;
-
+        return $this->inputFilter;
     }
 }
