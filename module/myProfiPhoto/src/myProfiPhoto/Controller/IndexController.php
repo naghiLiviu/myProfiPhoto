@@ -9,13 +9,15 @@
 namespace myProfiPhoto\Controller;
 
 use myProfiPhoto\Form\RegisterForm;
+use myProfiPhoto\Model\UserTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use myProfiPhoto\Form\LoginForm;
 
 class IndexController extends AbstractActionController
 {
-// some funtions to be addded
+    protected $userTable;
+
     public function indexAction()
     {
         $viewModel = new ViewModel();
@@ -25,14 +27,26 @@ class IndexController extends AbstractActionController
 
     public function loginAction()
     {
-
         $form = new LoginForm();
+//        $user = new UserTable();
 
+        $request = $this->getRequest();
+        if($request->isPost()){
+            $postData = $request->getPost();
+//            \Zend\Debug\Debug::dump($postData);
+            $form->setData($request->getPost());
+//            \Zend\Debug\Debug::dump($form->setData($request->getPost()));
+            if($form->isValid()){
+                $this->getUserTable()->login($postData['username'], $postData['password']);
+            }
+        }
         $viewModel = new ViewModel(
             array('form' => $form,)
         );
         $viewModel->setTemplate('myprofiphoto/myprofiphoto/login.phtml');
         return $viewModel;
+
+
     }
 
     /**
@@ -58,4 +72,14 @@ class IndexController extends AbstractActionController
         $viewModel->setTemplate('myprofiphoto/myprofiphoto/logout.phtml');
         return $viewModel;
     }
+
+    public function getUserTable()
+    {
+        if (!$this->userTable) {
+            $sm = $this->getServiceLocator();
+            $this->userTable = $sm->get('myProfiPhoto\Model\UserTable');
+        }
+        return $this->userTable;
+    }
+
 }

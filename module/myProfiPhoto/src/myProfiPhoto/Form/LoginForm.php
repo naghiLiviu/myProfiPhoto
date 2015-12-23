@@ -14,6 +14,8 @@ class LoginForm extends Form
     public function __construct($name = null)
     {
         parent ::__construct('myprofiphoto');
+        $this->setAttribute('method', 'POST');
+
 
         $this->add(array(
             'name' => 'id',
