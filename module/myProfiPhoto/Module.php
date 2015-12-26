@@ -8,6 +8,12 @@
 
 namespace myProfiPhoto;
 
+use myProfiPhoto\Model\ContactDetail;
+use myProfiPhoto\Model\ContactDetailTable;
+use myProfiPhoto\Model\Photo;
+use myProfiPhoto\Model\PhotoTable;
+use myProfiPhoto\Model\Topic;
+use myProfiPhoto\Model\TopicTable;
 use myProfiPhoto\Model\User;
 use myProfiPhoto\Model\UserTable;
 use Zend\Db\ResultSet\ResultSet;
@@ -51,6 +57,39 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new User());
                     return new TableGateway('User', $dbAdapter, null, $resultSetPrototype);
+                },
+                'myProfiPhoto\Model\ContactDetailTable' =>  function($sm) {
+                    $tableGateway = $sm->get('ContactDetailTableGateway');
+                    $table = new ContactDetailTable($tableGateway);
+                    return $table;
+                },
+                'ContactDetailTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new ContactDetail());
+                    return new TableGateway('ContactDetail', $dbAdapter, null, $resultSetPrototype);
+                },
+                'myProfiPhoto\Model\TopicTable' =>  function($sm) {
+                    $tableGateway = $sm->get('TopicTableGateway');
+                    $table = new TopicTable($tableGateway);
+                    return $table;
+                },
+                'TopicTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Topic());
+                    return new TableGateway('Topic', $dbAdapter, null, $resultSetPrototype);
+                },
+                'myProfiPhoto\Model\PhotoTable' =>  function($sm) {
+                    $tableGateway = $sm->get('PhotoTableGateway');
+                    $table = new PhotoTable($tableGateway);
+                    return $table;
+                },
+                'PhotoTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Photo());
+                    return new TableGateway('Photo', $dbAdapter, null, $resultSetPrototype);
                 },
             ),
         );
