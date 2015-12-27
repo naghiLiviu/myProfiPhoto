@@ -9,8 +9,11 @@ $form = $this->form;
 $title = 'Log in';
 $this->headTitle($title);
 ?>
-
+<html>
+<head>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
+</head>
+<body>
 <?php
 $form->prepare();
 echo $this->form()->openTag($form);
@@ -32,3 +35,5 @@ echo $this->form()->openTag($form);
 
     <?php echo $this->form()->closeTag($form); ?>
 </div>
+</body>
+</html>
