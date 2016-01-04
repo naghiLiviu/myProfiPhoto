@@ -12,6 +12,8 @@ use myProfiPhoto\Model\ContactDetail;
 use myProfiPhoto\Model\ContactDetailTable;
 use myProfiPhoto\Model\Photo;
 use myProfiPhoto\Model\PhotoTable;
+use myProfiPhoto\Model\Social;
+use myProfiPhoto\Model\SocialTable;
 use myProfiPhoto\Model\Topic;
 use myProfiPhoto\Model\TopicTable;
 use myProfiPhoto\Model\User;
@@ -90,6 +92,17 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Photo());
                     return new TableGateway('Photo', $dbAdapter, null, $resultSetPrototype);
+                },
+                'myProfiPhoto\Model\SocialTable' =>  function($sm) {
+                    $tableGateway = $sm->get('SocialTableGateway');
+                    $table = new SocialTable($tableGateway);
+                    return $table;
+                },
+                'SocialTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Social());
+                    return new TableGateway('Social', $dbAdapter, null, $resultSetPrototype);
                 },
             ),
         );
