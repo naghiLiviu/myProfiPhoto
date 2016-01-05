@@ -70,6 +70,9 @@ class IndexController extends AbstractActionController
             $form->setData($data);
             $valid = $form->isValid();
             if($valid) {
+                if (!$this->getUserTable()->verifyUser('LiviuAdmin', 'liviu.naghi93@gmail.com')) {
+                    echo 'sugeo';
+                }
                 $this->getUserTable()->registerUser($data['username'], $data['password'], $data['email']);
                 $this->getContactDetailTable()->insertUserDetail($data['firstName'], $data['lastName'],
                     $data['birthDate'], $data['gender']);

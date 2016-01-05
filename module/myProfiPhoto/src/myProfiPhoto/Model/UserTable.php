@@ -37,6 +37,17 @@ class UserTable
         return $row;
     }
 
+    public function verifyUser($username, $email)
+    {
+        $rowset = $this->tableGateway->select(array('UserName' => $username, 'Email' => $email));
+        $row = $rowset->current();
+        if ($row) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public function registerUser($username, $password, $email)
     {
         $data = array(
