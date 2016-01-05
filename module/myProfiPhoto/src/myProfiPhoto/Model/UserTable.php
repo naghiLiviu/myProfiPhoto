@@ -37,22 +37,16 @@ class UserTable
         return $row;
     }
 
-    public function registerUser(User $user)
+    public function registerUser($username, $password, $email)
     {
         $data = array(
-            'UserName'   => $user->username,
-            'Password'   => $user->password,
-            'Email'      => $user->email,
-            'RoleId'     => $user->roleId,
-            'UserStatus' => $user->userStatus,
+            'UserName'   => $username,
+            'Password'   => $password,
+            'Email'      => $email,
+            'RoleId'     => '3',
+            'UserStatus' => 'Active',
         );
-
-        $id = (int) $user->userId;
-        if ($id == 0) {
             $this->tableGateway->insert($data);
-        } else {
-            throw new \Exception('The data are already in database!');
-        }
     }
 
     public function login($username, $password)

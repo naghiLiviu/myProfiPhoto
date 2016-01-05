@@ -10,6 +10,7 @@ namespace myProfiPhoto\Controller;
 
 use myProfiPhoto\Form\RegisterForm;
 use myProfiPhoto\Form\ValidatorsRegisterForm;
+use myProfiPhoto\Model\User;
 use myProfiPhoto\Model\UserTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
@@ -18,6 +19,7 @@ use myProfiPhoto\Form\LoginForm;
 class IndexController extends AbstractActionController
 {
     protected $userTable;
+    protected $contactDetailTable;
 
     public function indexAction()
     {
@@ -38,7 +40,8 @@ class IndexController extends AbstractActionController
             $form->setData($request->getPost());
 //            \Zend\Debug\Debug::dump($form->setData($request->getPost()));
             if($form->isValid()){
-                $this->getUserTable()->login($postData['username'], $postData['password']);
+               $this->getUserTable()->login($postData['username'], $postData['password']);
+
             }
         }
         $viewModel = new ViewModel(
@@ -60,7 +63,6 @@ class IndexController extends AbstractActionController
     {
         $form = new RegisterForm();
 
-
         $request = $this->getRequest();
 
         if ($request->isPost()) {
@@ -72,15 +74,15 @@ class IndexController extends AbstractActionController
             $form->setData($data);
             $valid = $form->isValid();
             if($valid) {
-                \Zend\Debug\Debug::dump($form->getData());
+                $this->getUserTable()->registerUser($data['username'], $data['password'], $data['email']);
+                $this->getContactDetailTable()->insertUserDetail($data['firstName'], $data['lastName'],
+                    $data['birthDate'], $data['gender']);
+            } else {
+                echo 'Please fill in all the fields';
             }
 
         }
-//        if($request->isPost()) {
-//            $data=$this->getRequest()->getPost();
-//            $form->setData($data);
-//            $form->setInputFilter($registerValidator->registerFormInputFilter());
-//        }
+
         $viewModel = new ViewModel(
             array('form' => $form,)
         );
@@ -103,5 +105,16 @@ class IndexController extends AbstractActionController
         }
         return $this->userTable;
     }
+
+    public function getContactDetailTable()
+    {
+        if (!$this->contactDetailTable) {
+            $sm = $this->getServiceLocator();
+            $this->contactDetailTable = $sm->get('myProfiPhoto\Model\ContactDetailTable');
+        }
+        return $this->contactDetailTable;
+    }
+
+
 
 }

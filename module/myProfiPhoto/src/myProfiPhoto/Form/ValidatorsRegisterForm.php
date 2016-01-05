@@ -19,7 +19,6 @@ class ValidatorsRegisterForm implements InputFilterAwareInterface
 {
     protected $inputFilter;
 
-
     public function setInputFilter(InputFilterInterface $inputFilter)
     {
         throw new \Exception("Not used");
@@ -27,7 +26,6 @@ class ValidatorsRegisterForm implements InputFilterAwareInterface
 
     public function getInputFilter()
     {
-
 
         if (!$this->inputFilter) {
             $inputFilter = new InputFilter();
@@ -161,7 +159,7 @@ class ValidatorsRegisterForm implements InputFilterAwareInterface
 
             $inputFilter->add($factory->createInput(array(
                 'name' => 'g-recaptcha-response',
-                'require' => 'true',
+                'require' => true,
             )));
 
             $inputFilter->add($factory->createInput(array(

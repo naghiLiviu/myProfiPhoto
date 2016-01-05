@@ -26,4 +26,15 @@ class ContactDetailTable
         return $resultSet;
     }
 
+    public function insertUserDetail($firstName, $lastName,$birth, $gender)
+    {
+        $data = array(
+            'FirstName' => $firstName,
+            'LastName' => $lastName,
+            'BirthDate' => $birth,
+            'Gender' => $gender,
+        );
+        $this->tableGateway->insert($data);
+    }
+
 }
