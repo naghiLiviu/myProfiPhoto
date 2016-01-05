@@ -31,14 +31,11 @@ class IndexController extends AbstractActionController
     public function loginAction()
     {
         $form = new LoginForm();
-//        $user = new UserTable();
 
         $request = $this->getRequest();
         if($request->isPost()){
             $postData = $request->getPost();
-//            \Zend\Debug\Debug::dump($postData);
             $form->setData($request->getPost());
-//            \Zend\Debug\Debug::dump($form->setData($request->getPost()));
             if($form->isValid()){
                $this->getUserTable()->login($postData['username'], $postData['password']);
 
@@ -67,7 +64,6 @@ class IndexController extends AbstractActionController
 
         if ($request->isPost()) {
             $data = $request->getPost();
-//            \Zend\Debug\Debug::dump($data);
             $validator = new ValidatorsRegisterForm();
             $form->setInputFilter($validator->getInputFilter());
 
