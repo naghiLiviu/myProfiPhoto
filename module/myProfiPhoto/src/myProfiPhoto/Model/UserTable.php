@@ -41,7 +41,7 @@ class UserTable
     {
         $data = array(
             'UserName'   => $username,
-            'Password'   => $password,
+            'Password'   => md5($password),
             'Email'      => $email,
             'RoleId'     => '3',
             'UserStatus' => 'Active',
