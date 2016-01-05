@@ -58,6 +58,12 @@ class UserTable
             'UserStatus' => 'Active',
         );
             $this->tableGateway->insert($data);
+
+    }
+
+    public function getLastId()
+    {
+        return $this->tableGateway->adapter->getDriver()->getLastGeneratedValue();
     }
 
     public function login($username, $password)

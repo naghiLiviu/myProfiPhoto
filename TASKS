@@ -15,5 +15,6 @@ LIVIU
 1. RegisterForm - COMPLETE
 2. Register actions - COMPLETE
 3. Register Filter for date -
-4. Register redirect to Log In - COMPLETED
-5. Verify on register if username & email already exists in DB - COMPLETED
+4. Register redirect to Log In - COMPLETE
+5. Verify on register if username & email already exists in DB - COMPLETE
+6. Insert UserId in ContactDetail table - COMPLETE

@@ -59,7 +59,6 @@ class IndexController extends AbstractActionController
     public function registerAction()
     {
         $form = new RegisterForm();
-
         $request = $this->getRequest();
 
         if ($request->isPost()) {
@@ -70,14 +69,18 @@ class IndexController extends AbstractActionController
             $form->setData($data);
             $valid = $form->isValid();
             if($valid) {
-                if (!$this->getUserTable()->verifyUser('LiviuAdmin', 'liviu.naghi93@gmail.com')) {
-                    echo 'sugeo';
+                if (!$this->getUserTable()->verifyUser($data['username'], $data['email'])) {
+                    echo 'Username or email already exists!';
+                } else {
+                    $this->getUserTable()->registerUser($data['username'], $data['password'], $data['email']);
+                    $this->getContactDetailTable()->insertUserDetail($data['firstName'], $data['lastName'],
+                    $data['birthDate'], $data['gender'], $this->getUserTable()->getLastId());
+                    $this->redirect()->toUrl('http://myprofiphoto.com/login');
                 }
-                $this->getUserTable()->registerUser($data['username'], $data['password'], $data['email']);
-                $this->getContactDetailTable()->insertUserDetail($data['firstName'], $data['lastName'],
-                    $data['birthDate'], $data['gender']);
+
             } else {
                 echo 'Please fill in all the fields';
+
             }
 
         }

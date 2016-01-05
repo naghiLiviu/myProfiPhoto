@@ -54,7 +54,7 @@ class RegisterForm extends Form
                 'label' => 'Insert birth day',
             ),
             'attributes' => array(
-                'placeholder' => '__/__/____'
+                'placeholder' => '____-__-__'
             ),
         ));
 
