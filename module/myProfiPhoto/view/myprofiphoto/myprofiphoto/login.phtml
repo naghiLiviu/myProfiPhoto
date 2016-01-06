@@ -18,7 +18,10 @@ $this->headTitle($title);
 $form->prepare();
 echo $this->form()->openTag($form);
 ?>
-
+<span>
+        <a href="<?php echo $this->url('myProfiPhoto', array('action'=>'index'));?>"  class="btn-link">Home</a>
+        <br>
+</span>
 <div class="form_element">
     <div class="control-group">
         <?php echo $this->formLabel($form->get('username')->setLabelAttributes(array('class'=>'control-label'))); ?>
@@ -29,10 +32,8 @@ echo $this->form()->openTag($form);
         <div class="controls"><?php echo $this->formInput($form->get('password')); ?></div>
     </div>
     <div class="control-group">
-        <br>
         <div class="controls"><?php echo $this->formInput($form->get('submit')); ?></div>
     </div>
-
     <?php echo $this->form()->closeTag($form); ?>
 </div>
 </body>

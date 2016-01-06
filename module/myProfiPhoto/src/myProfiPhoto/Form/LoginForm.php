@@ -50,13 +50,12 @@ class LoginForm extends Form
 
         $this->add(array(
             'name' => 'submit',
-            'type' => 'Zend\Form\Element\Submit',
+            'type' => 'Submit',
             'attributes' => array(
-                'value' => 'Go',
+                'value' => 'Log in',
                 'id' => 'submitbutton',
+                'class' => 'btn-link'
             ),
         ));
-
-
     }
 }

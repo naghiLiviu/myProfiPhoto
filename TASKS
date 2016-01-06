@@ -18,3 +18,4 @@ LIVIU
 4. Register redirect to Log In - COMPLETE
 5. Verify on register if username & email already exists in DB - COMPLETE
 6. Insert UserId in ContactDetail table - COMPLETE
+7. Add home and login buttons on login vire - COMPLETE
