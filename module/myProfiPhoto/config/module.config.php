@@ -4,6 +4,8 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'myProfiPhoto\Controller\Index' => 'myProfiPhoto\Controller\IndexController',
+            'myProfiPhoto\Controller\InfoCollector' => 'myProfiPhoto\Controller\InfoCollectorController',
+            'myProfiPhoto\Controller\Info' => 'myProfiPhoto\Controller\InfoController',
         ),
     ),
     'router' => array(
