@@ -18,8 +18,8 @@ return array(
                 'options' => array(
                     'route'    => '/myProfiPhoto',
                     'defaults' => array(
-                        '__NAMESPACE__' => 'myProfiPhoto\Controller',
-                        'module'        => 'myProfiPhoto',
+                        '__NAMESPACE__' => 'User\Controller',
+                        'module'        => 'user',
                         'controller'    => 'Index',
                         'action'        => 'index',
                     ),

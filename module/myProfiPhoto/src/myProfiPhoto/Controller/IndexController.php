@@ -31,14 +31,12 @@ class IndexController extends AbstractActionController
     public function loginAction()
     {
         $form = new LoginForm();
-
         $request = $this->getRequest();
         if($request->isPost()){
             $postData = $request->getPost();
             $form->setData($request->getPost());
             if($form->isValid()){
                $this->getUserTable()->login($postData['username'], $postData['password']);
-
             }
         }
         $viewModel = new ViewModel(
